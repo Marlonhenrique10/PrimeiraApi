@@ -19,7 +19,7 @@ namespace WebApi.Controllers
         public IActionResult Add(InfoApiViewModel infApiView)
         {
             var infoApi = new InfoApi(infApiView.Name, infApiView.Age, null);
-            
+
             _infoApiRepositorio.Add(infoApi);
 
             return Ok();
@@ -29,7 +29,7 @@ namespace WebApi.Controllers
         public IActionResult Get()
         {
             var infoApiss = _infoApiRepositorio.Get();
-            
+
             return Ok(infoApiss);
         }
     }

@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "G8f+0HN0pUWHWj6IBffmOcn8XduSULa5+bbjC9E6QOUSe+GqVC5sNeJwbPiS2ifB/uH9pCRpOJ/bryCDwjvRSA==",
+  "dgSpecHash": "BdMecrkaLwmpmM8VK4lVLUO1FIv2TvlGhxEe6mnHQyNEVVAT4wWi563Vxvz+Pm+doswvCGHlQZUznjyEX0NYJg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Marlon Henrique\\OneDrive\\Área de Trabalho\\WebApi\\WebApi\\WebApi.csproj",
+  "projectFilePath": "C:\\Users\\Marlon Henrique\\OneDrive\\Área de Trabalho\\PrimeiraApi\\WebApi\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Marlon Henrique\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0\\microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
-    "C:\\Users\\Marlon Henrique\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.0\\microsoft.entityframeworkcore.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\Marlon Henrique\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.0\\microsoft.entityframeworkcore.analyzers.8.0.0.nupkg.sha512",
+    "C:\\Users\\Marlon Henrique\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.1\\microsoft.entityframeworkcore.8.0.1.nupkg.sha512",
+    "C:\\Users\\Marlon Henrique\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.1\\microsoft.entityframeworkcore.abstractions.8.0.1.nupkg.sha512",
+    "C:\\Users\\Marlon Henrique\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.1\\microsoft.entityframeworkcore.analyzers.8.0.1.nupkg.sha512",
     "C:\\Users\\Marlon Henrique\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.0\\microsoft.entityframeworkcore.relational.8.0.0.nupkg.sha512",
     "C:\\Users\\Marlon Henrique\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Marlon Henrique\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
