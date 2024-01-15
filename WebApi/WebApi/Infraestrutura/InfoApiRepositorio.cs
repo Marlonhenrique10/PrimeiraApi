@@ -14,7 +14,12 @@ namespace WebApi.Infraestrutura
 
         public List<InfoApi> Get()
         {
-            return _context.infoApis.ToList();
+            return _context.infoApis.ToList(); // Retornando um array com todas as informações do db
+        }
+
+        public InfoApi? Get(int id)
+        {
+            return _context.infoApis.Find(id); // Retornando o usuário que ele encontrar
         }
     }
 }

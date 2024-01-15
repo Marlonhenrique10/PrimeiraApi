@@ -15,6 +15,7 @@ namespace WebApi.Model
 
         public string? photo { get; private set; } // Estou permitindo que dentro da variavel, aceite o valor null
 
+        public InfoApi() { }
         // Construtor
         public InfoApi(string name, int age, string photo)
         {
