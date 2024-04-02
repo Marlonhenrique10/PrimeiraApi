@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Model;
-using WebApi.ViewModel;
+using WebApi.Aplication.ViewModel;
+using WebApi.Domain.Model;
 
 namespace WebApi.Controllers
 {
@@ -52,8 +52,6 @@ namespace WebApi.Controllers
         public IActionResult Get(int pageNumber, int pageQuantity)
         {
             _logger.Log(LogLevel.Error, "Erro");
-
-            throw new Exception("Erro de teste");
 
             var infoApiss = _infoApiRepositorio.Get(pageNumber, pageQuantity);
 

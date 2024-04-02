@@ -2,9 +2,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using WebApi.Model;
+using WebApi.Domain.Model;
 
-namespace WebApi.Services
+namespace WebApi.Aplication.Services
 {
     // Classe responsavél por gerar o token
     public class TokenServices

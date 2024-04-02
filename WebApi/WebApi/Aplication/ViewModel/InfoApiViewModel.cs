@@ -1,4 +1,4 @@
-﻿namespace WebApi.ViewModel
+﻿namespace WebApi.Aplication.ViewModel
 {
     public class InfoApiViewModel
     {
@@ -6,6 +6,6 @@
 
         public int Age { get; set; }
 
-        public IFormFile? Photo { get; set; }
+        public IFormFile Photo { get; set; }
     }
 }
