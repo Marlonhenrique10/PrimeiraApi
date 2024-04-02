@@ -10,10 +10,12 @@ namespace WebApi.Controllers
     public class InfoApiController : ControllerBase
     {
         private readonly IinfoApiRepositorio _infoApiRepositorio;
+        private readonly ILogger<InfoApiController> _logger;
 
-        public InfoApiController(IinfoApiRepositorio infoApiRepositorio)
+        public InfoApiController(IinfoApiRepositorio infoApiRepositorio, ILogger<InfoApiController> logger)
         {
             _infoApiRepositorio = infoApiRepositorio ?? throw new ArgumentNullException(nameof(infoApiRepositorio));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         [Authorize]
@@ -46,11 +48,16 @@ namespace WebApi.Controllers
             return File(dataByte, "image/png"); // Retornando para o front-end a minha imagem e passando o tipo que estarei passando
         }
 
-        [Authorize]
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(int pageNumber, int pageQuantity)
         {
-            var infoApiss = _infoApiRepositorio.Get();
+            _logger.Log(LogLevel.Error, "Erro");
+
+            throw new Exception("Erro de teste");
+
+            var infoApiss = _infoApiRepositorio.Get(pageNumber, pageQuantity);
+
+            _logger.LogInformation("Teste");
 
             return Ok(infoApiss);
         }

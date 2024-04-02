@@ -12,9 +12,9 @@ namespace WebApi.Infraestrutura
             _context.SaveChanges(); // Salvando a informação
         }
 
-        public List<InfoApi> Get()
+        public List<InfoApi> Get(int pageNumber, int pageQuantity)
         {
-            return _context.infoApis.ToList(); // Retornando um array com todas as informações do db
+            return _context.infoApis.Skip(pageNumber * pageQuantity).Take(pageQuantity).ToList(); // Retornando um array com todas as informações do db
         }
 
         public InfoApi? Get(int id)
