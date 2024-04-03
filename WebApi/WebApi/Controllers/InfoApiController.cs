@@ -43,21 +43,36 @@ namespace WebApi.Controllers
         {
             var infoApi = _infoApiRepositorio.Get(id); // Pegando os dados da imagem com o id do usuário
 
-            var dataByte = System.IO.File.ReadAllBytes(infoApi.photo);
+            if (infoApi == null)
+            {
+                return NotFound();
+            }
 
-            return File(dataByte, "image/png"); // Retornando para o front-end a minha imagem e passando o tipo que estarei passando
+            try
+            {
+                var dataByte = System.IO.File.ReadAllBytes(infoApi.photo);
+
+                return File(dataByte, "image/"); // Retornando para o front-end a minha imagem e passando o tipo que estarei passando
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, $"Erro ao ler a imagem: {ex.Message}");
+            }
         }
 
         [HttpGet]
         public IActionResult Get(int pageNumber, int pageQuantity)
         {
-            _logger.Log(LogLevel.Error, "Erro");
+            try
+            {
+                var infoApiss = _infoApiRepositorio.Get(pageNumber, pageQuantity);
 
-            var infoApiss = _infoApiRepositorio.Get(pageNumber, pageQuantity);
-
-            _logger.LogInformation("Teste");
-
-            return Ok(infoApiss);
+                return Ok(infoApiss);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro ao exebir dados");
+            }
         }
     }
 }
