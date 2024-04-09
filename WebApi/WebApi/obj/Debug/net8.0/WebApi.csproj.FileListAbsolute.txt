@@ -112,3 +112,4 @@ C:\Users\Marlon Henrique\OneDrive\Área de Trabalho\PrimeiraApi\WebApi\WebApi\bi
 C:\Users\Marlon Henrique\OneDrive\Área de Trabalho\PrimeiraApi\WebApi\WebApi\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Marlon Henrique\OneDrive\Área de Trabalho\PrimeiraApi\WebApi\WebApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Marlon Henrique\OneDrive\Área de Trabalho\PrimeiraApi\WebApi\WebApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Marlon Henrique\OneDrive\Área de Trabalho\PrimeiraApi\WebApi\WebApi\bin\Debug\net8.0\AutoMapper.dll

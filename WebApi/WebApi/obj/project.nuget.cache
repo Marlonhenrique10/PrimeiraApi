@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/8VUscg44mjUSfcvu0IYhqseP004vLH5eyPNSB0Xk5o+ZpDuF4HSAbQxgaOnKnr9zaQhvEmf+cPvDcvtWMLxFQ==",
+  "dgSpecHash": "XT7tPCyXFHUaKL+Eo06RKx/aro4wcggrEn3muZuNoaxH4doqFKZlOIaUrFbfdkJf6CUHAU19IHfbGw27x+RO6g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Marlon Henrique\\OneDrive\\Área de Trabalho\\PrimeiraApi\\WebApi\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Marlon Henrique\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Marlon Henrique\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Marlon Henrique\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.1\\microsoft.aspnetcore.authentication.jwtbearer.7.0.1.nupkg.sha512",
     "C:\\Users\\Marlon Henrique\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.1\\microsoft.aspnetcore.openapi.8.0.1.nupkg.sha512",

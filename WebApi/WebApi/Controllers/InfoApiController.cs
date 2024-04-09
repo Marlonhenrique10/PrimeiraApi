@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Aplication.ViewModel;
+using WebApi.Domain.DTOs;
 using WebApi.Domain.Model;
 
 namespace WebApi.Controllers
@@ -11,11 +13,13 @@ namespace WebApi.Controllers
     {
         private readonly IinfoApiRepositorio _infoApiRepositorio;
         private readonly ILogger<InfoApiController> _logger;
+        private readonly IMapper _mapper;
 
-        public InfoApiController(IinfoApiRepositorio infoApiRepositorio, ILogger<InfoApiController> logger)
+        public InfoApiController(IinfoApiRepositorio infoApiRepositorio, ILogger<InfoApiController> logger, IMapper mapper)
         {
             _infoApiRepositorio = infoApiRepositorio ?? throw new ArgumentNullException(nameof(infoApiRepositorio));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         [Authorize]
@@ -68,6 +72,24 @@ namespace WebApi.Controllers
                 var infoApiss = _infoApiRepositorio.Get(pageNumber, pageQuantity);
 
                 return Ok(infoApiss);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro ao exebir dados");
+            }
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult Search(int id)
+        {
+            try
+            {
+                var idUsuario = _infoApiRepositorio.Get(id);
+
+                var infoApiDTOS = _mapper.Map<InfoApiDTO>(idUsuario);
+
+                return Ok(infoApiDTOS);
             }
             catch (Exception ex)
             {
