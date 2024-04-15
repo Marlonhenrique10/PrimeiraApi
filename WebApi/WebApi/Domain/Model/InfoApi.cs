@@ -7,13 +7,13 @@ namespace WebApi.Domain.Model
     public class InfoApi
     {
         [Key]
-        public int id { get; private set; }
+        public int id { get; set; }
 
-        public string name { get; private set; }
+        public string name { get; set; }
 
-        public int age { get; private set; }
+        public int age { get; set; }
 
-        public string? photo { get; private set; } // Estou permitindo que dentro da variavel, aceite o valor null
+        public string? photo { get; set; } // Estou permitindo que dentro da variavel, aceite o valor null
 
         public InfoApi() { }
         // Construtor

@@ -31,5 +31,17 @@ namespace WebApi.Infraestrutura.Repositorios
         {
             return _context.infoApis.Find(id); // Retornando o usuário que ele encontrar
         }
+
+        public void Delete(InfoApi infoApi)
+        {
+            _context.infoApis.Remove(infoApi);
+            _context.SaveChanges();
+        }
+
+        public void Update(InfoApi infoApi)
+        {
+            _context.infoApis.Update(infoApi);
+            _context.SaveChanges();
+        }
     }
 }

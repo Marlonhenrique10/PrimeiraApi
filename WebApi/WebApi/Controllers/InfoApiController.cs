@@ -96,5 +96,70 @@ namespace WebApi.Controllers
                 return StatusCode(500, $"Erro ao exebir dados");
             }
         }
+
+        [Authorize]
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var infApi = _infoApiRepositorio.Get(id);
+
+                if (infApi == null)
+                {
+                    return Ok(new {messagem = $"Esse id {id} não existe na nossa base de dados!"});
+                }
+
+                _infoApiRepositorio.Delete(infApi);
+
+                return Ok(new { message = "Item deletado com sucesso!" });
+            }
+            catch (Exception ex) 
+            {
+                return StatusCode(500, $"Erro ao deletar o funcionário: {ex.Message}");
+            }
+        }
+
+        [Authorize]
+        [HttpPut("{id}")]
+        public IActionResult AtualizarDados(int id, [FromForm] InfoApiViewModel infApiView)
+        {
+            try
+            {
+                var existeImg = _infoApiRepositorio.Get(id);
+
+                if (existeImg == null)
+                {
+                    return Ok(new {message = $"Esse item {id} não existe na nossa base de dados"});
+                }
+
+                existeImg.name = infApiView.Name;
+                existeImg.age = infApiView.Age;
+
+                if (infApiView.Photo != null)
+                {
+                    if (!string.IsNullOrEmpty(existeImg.photo))
+                    {
+                        System.IO.File.Delete(existeImg.photo);
+                    }
+
+                    var filePath = Path.Combine("Storage", infApiView.Photo.FileName);
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        infApiView.Photo.CopyTo(fileStream);
+                    }
+
+                    existeImg.photo = filePath;
+                }
+
+                _infoApiRepositorio.Update(existeImg);
+
+                return Ok(new {message = "Item atualizado com sucesso!"});
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro ao atualizar os dados: {ex.Message}");
+            }
+        }
     }
 }
