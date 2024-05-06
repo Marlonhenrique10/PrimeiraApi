@@ -4,38 +4,38 @@ using Microsoft.AspNetCore.Mvc;
 using WebApi.Aplication.ViewModel;
 using WebApi.Domain.DTOs;
 using WebApi.Domain.Model;
+using WebApi.Infrastructure.Repositorys;
 
 namespace WebApi.Controllers
 {
     [ApiController]
-    [Route("api/v1/infoApi")] // Criando a minha rota padrão
+    [Route("api/v1/infoApi")]
     public class InfoApiController : ControllerBase
     {
-        private readonly IinfoApiRepositorio _infoApiRepositorio;
+        private readonly IinfoApiRepository _infoApiRepository;
         private readonly ILogger<InfoApiController> _logger;
         private readonly IMapper _mapper;
 
-        public InfoApiController(IinfoApiRepositorio infoApiRepositorio, ILogger<InfoApiController> logger, IMapper mapper)
+        public InfoApiController(IinfoApiRepository infoApiRepository, ILogger<InfoApiController> logger, IMapper mapper)
         {
-            _infoApiRepositorio = infoApiRepositorio ?? throw new ArgumentNullException(nameof(infoApiRepositorio));
+            _infoApiRepository = infoApiRepository ?? throw new ArgumentNullException(nameof(infoApiRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         [Authorize]
         [HttpPost]
-        public IActionResult Add([FromForm]InfoApiViewModel infApiView)
+        public IActionResult InsertPhoto([FromForm]InfoApiViewModel infApiView)
         {
 
-            var filePath = Path.Combine("Storage", infApiView.Photo.FileName); // Caminho do arquivo da foto
+            var filePath = Path.Combine("Storage", infApiView.Photo.FileName);
 
-            // Estou salvando o arquivo dentro da memória e depois colocando na pasta que eu quero
             using Stream fileStream = new FileStream(filePath, FileMode.Create);
             infApiView.Photo.CopyTo(fileStream);
 
             var infoApi = new InfoApi(infApiView.Name, infApiView.Age, filePath);
 
-            _infoApiRepositorio.Add(infoApi);
+            _infoApiRepository.InsertPhoto(infoApi);
 
             return Ok();
         }
@@ -45,7 +45,7 @@ namespace WebApi.Controllers
         [Route("{id}/download")]
         public IActionResult DownloadPhoto(int id)
         {
-            var infoApi = _infoApiRepositorio.Get(id); // Pegando os dados da imagem com o id do usuário
+            var infoApi = _infoApiRepository.Get(id);
 
             if (infoApi == null)
             {
@@ -56,7 +56,7 @@ namespace WebApi.Controllers
             {
                 var dataByte = System.IO.File.ReadAllBytes(infoApi.photo);
 
-                return File(dataByte, "image/"); // Retornando para o front-end a minha imagem e passando o tipo que estarei passando
+                return File(dataByte, "image/");
             }
             catch(Exception ex)
             {
@@ -69,7 +69,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var infoApiss = _infoApiRepositorio.Get(pageNumber, pageQuantity);
+                var infoApiss = _infoApiRepository.Get(pageNumber, pageQuantity);
 
                 return Ok(infoApiss);
             }
@@ -85,7 +85,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var idUsuario = _infoApiRepositorio.Get(id);
+                var idUsuario = _infoApiRepository.Get(id);
 
                 var infoApiDTOS = _mapper.Map<InfoApiDTO>(idUsuario);
 
@@ -103,14 +103,14 @@ namespace WebApi.Controllers
         {
             try
             {
-                var infApi = _infoApiRepositorio.Get(id);
+                var infApi = _infoApiRepository.Get(id);
 
                 if (infApi == null)
                 {
                     return Ok(new {messagem = $"Esse id {id} não existe na nossa base de dados!"});
                 }
 
-                _infoApiRepositorio.Delete(infApi);
+                _infoApiRepository.Delete(infApi);
 
                 return Ok(new { message = "Item deletado com sucesso!" });
             }
@@ -122,11 +122,11 @@ namespace WebApi.Controllers
 
         [Authorize]
         [HttpPut("{id}")]
-        public IActionResult AtualizarDados(int id, [FromForm] InfoApiViewModel infApiView)
+        public IActionResult Update(int id, [FromForm] InfoApiViewModel infApiView)
         {
             try
             {
-                var existeImg = _infoApiRepositorio.Get(id);
+                var existeImg = _infoApiRepository.Get(id);
 
                 if (existeImg == null)
                 {
@@ -152,7 +152,7 @@ namespace WebApi.Controllers
                     existeImg.photo = filePath;
                 }
 
-                _infoApiRepositorio.Update(existeImg);
+                _infoApiRepository.Update(existeImg);
 
                 return Ok(new {message = "Item atualizado com sucesso!"});
             }

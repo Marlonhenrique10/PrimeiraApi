@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApi.Domain.Model;
 
-namespace WebApi.Infraestrutura
+namespace WebApi.infrastructure
 {
     public class ConnectionContext : DbContext
     {

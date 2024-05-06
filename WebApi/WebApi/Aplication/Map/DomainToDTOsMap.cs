@@ -2,12 +2,12 @@
 using WebApi.Domain.DTOs;
 using WebApi.Domain.Model;
 
-namespace WebApi.Aplication.Mapa
+namespace WebApi.Aplication.Map
 {
-    public class DomainToDTOsMapa : Profile
+    public class DomainToDTOsMap : Profile
     {
 
-        public DomainToDTOsMapa()
+        public DomainToDTOsMap()
         {
             CreateMap<InfoApi, InfoApiDTO>()
                 .ForMember(dest => dest.Name, m => m.MapFrom(orig => orig.name));

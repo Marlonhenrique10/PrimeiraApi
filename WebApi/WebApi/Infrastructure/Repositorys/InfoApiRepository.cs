@@ -1,22 +1,23 @@
 ﻿using WebApi.Domain.DTOs;
 using WebApi.Domain.Model;
+using WebApi.infrastructure;
 
-namespace WebApi.Infraestrutura.Repositorios
+namespace WebApi.Infrastructure.Repositorys
 {
-    public class InfoApiRepositorio : IinfoApiRepositorio
+    public class InfoApiRepository : IinfoApiRepository
     {
         private readonly ConnectionContext _context = new ConnectionContext();
 
-        public void Add(InfoApi infoApi)
+        public void InsertPhoto(InfoApi infoApi)
         {
-            _context.infoApis.Add(infoApi); // Add valor a minha tabela
-            _context.SaveChanges(); // Salvando a informação
+            _context.infoApis.Add(infoApi);
+            _context.SaveChanges();
         }
 
         public List<InfoApiDTO> Get(int pageNumber, int pageQuantity)
         {
-            return _context.infoApis.Skip(pageNumber * pageQuantity) // Calculando a quantidade de pagina * a quantidade de item na tabela
-                .Take(pageQuantity) // Pega a quantidade de item na tabela
+            return _context.infoApis.Skip(pageNumber * pageQuantity)
+                .Take(pageQuantity)
                 .Select(b => 
                 new InfoApiDTO()
                 {
@@ -24,12 +25,12 @@ namespace WebApi.Infraestrutura.Repositorios
                     Name = b.name,
                     Photo = b.photo
                 })
-                .ToList(); // Retornando um array com todas as informações do db
+                .ToList();
         }
 
         public InfoApi? Get(int id)
         {
-            return _context.infoApis.Find(id); // Retornando o usuário que ele encontrar
+            return _context.infoApis.Find(id);
         }
 
         public void Delete(InfoApi infoApi)

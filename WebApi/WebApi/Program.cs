@@ -4,9 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using WebApi;
-using WebApi.Infraestrutura.Repositorios;
+using WebApi.Infrastructure.Repositorys;
 using WebApi.Domain.Model;
-using WebApi.Aplication.Mapa;
+using WebApi.Aplication.Map;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddAutoMapper(typeof(DomainToDTOsMapa));
+builder.Services.AddAutoMapper(typeof(DomainToDTOsMap));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -48,7 +48,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // A minha interface irá implementar na minha classe InfoApiRepositorio
-builder.Services.AddTransient<IinfoApiRepositorio, InfoApiRepositorio>();
+builder.Services.AddTransient<IinfoApiRepository, InfoApiRepository>();
 
 
 var key = Encoding.ASCII.GetBytes(WebApi.Key.Secret);

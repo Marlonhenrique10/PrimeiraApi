@@ -13,7 +13,7 @@ namespace WebApi.Domain.Model
 
         public int age { get; set; }
 
-        public string? photo { get; set; } // Estou permitindo que dentro da variavel, aceite o valor null
+        public string? photo { get; set; }
 
         public InfoApi() { }
         // Construtor

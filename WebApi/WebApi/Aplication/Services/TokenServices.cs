@@ -21,16 +21,15 @@ namespace WebApi.Aplication.Services
                 }),
                 Expires = DateTime.UtcNow.AddHours(3),
 
-                // Tipo assinatura. (estou passando a minha chave privada e o tipo de criptografia que estou utilizando)
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
 
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
-            var token = tokenHandler.CreateToken(tokenConfig); // Estou criando o token
+            var token = tokenHandler.CreateToken(tokenConfig);
 
-            var tokenString = tokenHandler.WriteToken(token); // Estou escrevendo o token
+            var tokenString = tokenHandler.WriteToken(token);
 
             return new
             {
